@@ -1,76 +1,72 @@
-import React from 'react';
-import {StyleSheet,Text, View ,TextInput} from 'react-native';
+import React, { Component } from 'react';
+import { Alert, Button, TextInput, View, StyleSheet } from 'react-native';
 
-export default function YourApp() {
-  return (
-    <View style={styles.container}>
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      username: '',
+      password: '',
+    };
+  }
+  
+  onLogin() {
+    const { username, password } = this.state;
 
-      <View style = {styles.top}>
-          <Text style={styles.bigBlue}>Login</Text>
-       </View>
-       <View style = {styles.bottom}>
-          <Text style = {styles.bigBlue}>ID</Text>
+    Alert.alert('Credentials', `${username} + ${password}`);
+  }
 
-               <TextInput style = {styles.text}
-
-                 placeholder="Type your id!"
-                />
-                <Text style = {styles.bigBlue}>Name</Text>
-
-                <TextInput style = {styles.text}
-
-                                 placeholder="Type your name"
-                                />
-        </View>
-    </View>
-  );
+  render() {
+    return (
+      <View style={styles.container}>
+        <TextInput
+          value={this.state.username}
+          onChangeText={(username) => this.setState({ username })}
+          placeholder={'Username'}
+          placeholderTextColor = "#ffffff"
+          style={styles.input} 
+        />
+        <TextInput
+          value={this.state.password}
+          onChangeText={(password) => this.setState({ password })}
+          placeholder={'Password'}
+          placeholderTextColor = "#ffffff"
+          secureTextEntry={true}
+          style={styles.input}
+        />
+        
+        <Button
+          title={'Login'}
+          color='darkgreen'
+          
+         
+      // style={styles.input}
+         
+          onPress={this.onLogin.bind(this)}
+        />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-   container:{
-   backgroundColor:'lightblue',
-//   alignItems:'center',
-    flex:1,
-
-    },
-     bigBlue: {
-        color: 'black',
-        fontWeight: 'bold',
-        fontSize: 50,
-      },
-    top:{
-
-    fontSize: 30,
-    height:'20%',
-    backgroundColor:'blue',
-    alignItems:'center',
-
-    },
-
-    bottom:{
-
-    fontSize: 30,
-        height:'80%',
-        backgroundColor:'lightgreen',
-        alignItems:'center',
-//        padding:0,
-//        margin:0
-
-    },
-
-    text:{
-      height:40,
-      width:300,
-      backgroundColor:'white',
-      borderColor:'green',
-      borderWidth:1
-   }
-
-//
-//    input:{
-//    flex:1,
-//    backgroundColor:'green',
-//    width:100,
-//    height:50,
-//    }
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#708090',
+  },
+  input: {
+    width: 300,
+    height: 54,
+    padding:10,
+    // borderWidth: 1,
+    //  borderColor: 'red',
+    borderRadius:30,
+    marginBottom: 25,
+  paddingHorizontal:16,
+  fontSize:20,
+    backgroundColor:'rgba(255, 255, 255,0.3)',
+  },
 });
