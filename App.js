@@ -35,16 +35,18 @@ export default class App extends Component {
           secureTextEntry={true}
           style={styles.input}
         />
-        
-        <Button
+        <View style={styles.login}>
+        <Button 
           title={'Login'}
           color='darkgreen'
           
          
       // style={styles.input}
-         
-          onPress={this.onLogin.bind(this)}
-        />
+      onPress={() => {
+        Alert.alert('Logged Successfully!');
+      }}
+          // onPress={this.onLogin.bind(this)}
+        /></View>
       </View>
     );
   }
@@ -68,5 +70,21 @@ const styles = StyleSheet.create({
   paddingHorizontal:16,
   fontSize:20,
     backgroundColor:'rgba(255, 255, 255,0.3)',
+  },
+  login:{
+    // marginRight:50,
+    // marginLeft:40,
+    marginTop:10,
+     paddingTop:5,
+      paddingLeft:10,
+     paddingRight:10,
+     paddingBottom:5,
+    backgroundColor:'darkgreen',
+    
+    borderRadius:70,
+    width:150,
+
+    // borderWidth: 1,
+    borderColor: 'darkgreen'
   },
 });
