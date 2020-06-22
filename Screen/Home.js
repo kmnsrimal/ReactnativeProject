@@ -1,4 +1,3 @@
-
 // import React, { Component } from 'react';
 // import { Alert, Button, TextInput, View, StyleSheet } from 'react-native';
 
@@ -93,52 +92,42 @@
 //   },
 // });
 
-// // // export default createStackNavigator({
-// // //     home: App
-// // // })
-import 'react-native-gesture-handler';
-import React from 'react';
+import React, { Component } from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
+StyleSheet,
+Text,Button,
+View,
+TouchableHighlight,TouchableOpacity,
+Image,TextInput,
+Alert,
+ScrollView,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator, HeaderTitle} from 'react-navigation-stack';
-import {createAppContainer} from 'react-navigation';
-import {
-  Header,
-  // LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+class Home extends React.Component {
+constructor(props) {
+super(props);
+}
 
- import Home from './Screens/Home'
- import Profile from './Screens/Profile'
+GoToNextScreen(){
 
-const MainNavigator = createStackNavigator({
-  Profile:{screen:Profile},
-    Home:{screen:Home},
+    const {navigate} = this.props.navigation;
+    navigate('Profile', )
+}
 
-
-  
-
-},{
-
-  headerMode:{
-    headerLeft: null,
-    gesturesEnabled: false,
-    headerMode: 'none',
-  }
-}); 
-
-
-const App = createAppContainer(MainNavigator);
-
-
-const MainApp = () => <App  />;
-export default App;
+render() {
+    return (
+    <View style={styles.container}>
+      <Text>This is the Home screen!</Text>
+      <Button 
+      onPress={this.GoToNextScreen.bind(this)}
+       title="Home screen" />
+    </View>
+   );
+}
+}
+const styles = StyleSheet.create({
+container:{
+flex:1,
+alignItems:'center',
+}
+});
+export default Home;
