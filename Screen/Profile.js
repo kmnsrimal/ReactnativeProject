@@ -17,7 +17,7 @@ super(props);
 GoToNextScreen(){
 
     const {navigate} = this.props.navigation;
-    navigate('Profile', )
+    navigate('Home', )
 }
 
 render() {
